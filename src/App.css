@@ -3,10 +3,6 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.content {
-  margin: 1rem;
-}
-
 .nav-bar {
   background-color: #6851ff;
   height: 100px;
@@ -18,13 +14,13 @@
 }
 
 .nav-links {
-  width: 325px;
+  width: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 24px;
   font-weight: bold;
-  margin-right: 10px;
+  margin-right: 25px;
 }
 
 .magic-horizontal {
@@ -44,4 +40,45 @@ a {
 
 a:hover {
   color: rgba(232, 232, 232, 0.9);
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+}
+
+.home-title {
+  font-size: 55px;
+  font-weight: bold;
+  padding: 0;
+  line-height: 1.1;
+  margin-top: 70px;
+}
+
+.home-title span {
+  font-weight: normal;
+  font-size: 45px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+}
+
+.logo {
+  height: 150px;
+}
+
+.plus-sign {
+  font-size: 55px;
+  padding: 0;
+  margin: 0;
+}
+
+.wallet-container {
+  margin-top: 150px;
 }

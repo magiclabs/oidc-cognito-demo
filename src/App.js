@@ -11,7 +11,7 @@ import WalletPage from "./pages/WalletPage";
 function App() {
   return (
     <div className="App">
-      <Router className="content">
+      <Router>
         <div className="nav-bar">
           <a
             className="logo-link"
