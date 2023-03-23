@@ -6,28 +6,41 @@ import {
   NavLink,
 } from "react-router-dom";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import PremiumPage from "./pages/PremiumPage";
+import WalletPage from "./pages/WalletPage";
 
 function App() {
   return (
     <div className="App">
       <Router className="content">
-        <div>
-          <NavLink className="content" exact activeClassName="active" to="/">
-            Home
-          </NavLink>
-          <NavLink className="content" activeClassName="active" to="/about">
-            About
-          </NavLink>
-          <NavLink className="content" activeClassName="active" to="/premium">
-            Premium Content
-          </NavLink>
+        <div className="nav-bar">
+          <a
+            className="logo-link"
+            href="https://magic.link/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              className="magic-horizontal"
+              src="/magic_logo_horizontal.png"
+              alt="magic logo"
+            />
+          </a>
+          <div className="nav-links">
+            <NavLink className="content" exact activeClassName="active" to="/">
+              Home
+            </NavLink>
+            <NavLink
+              className="content"
+              activeClassName="active"
+              to="/magic-wallet"
+            >
+              Magic Wallet
+            </NavLink>
+          </div>
         </div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/premium" element={<PremiumPage />} />
+          <Route path="/magic-wallet" element={<WalletPage />} />
         </Routes>
       </Router>
     </div>

@@ -2,7 +2,7 @@ import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import MagicWidget from "../components/MagicWidget";
 
-const PremiumPage = () => {
+const WalletPage = () => {
   return (
     <Authenticator>
       {({ signOut, user }) => (
@@ -17,4 +17,4 @@ const PremiumPage = () => {
   );
 };
 
-export default PremiumPage;
+export default WalletPage;

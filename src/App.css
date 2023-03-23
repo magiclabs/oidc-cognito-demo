@@ -1,7 +1,47 @@
 .App {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .content {
   margin: 1rem;
+}
+
+.nav-bar {
+  background-color: #6851ff;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  margin-bottom: 80px;
+}
+
+.nav-links {
+  width: 325px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.magic-horizontal {
+  padding-top: 5px;
+  height: 70px;
+  margin-left: 20px;
+}
+
+.magic-horizontal:hover {
+  opacity: 0.9;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgba(232, 232, 232, 0.9);
 }
