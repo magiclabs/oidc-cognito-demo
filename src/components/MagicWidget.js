@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { Magic } from "magic-sdk";
 import { OpenIdExtension } from "@magic-ext/oidc";
 import PulseLoader from "react-spinners/PulseLoader";
-import { WebSocketProvider } from "ethers";
+import { ethers } from "ethers";
 
 const MagicWidget = ({ user }) => {
-  const [metadata, setMetadata] = useState();
-  const [balance, setBalance] = useState();
+  const [address, setAddress] = useState();
+  const [balance, setBalance] = useState(0);
   const [loading, setLoading] = useState(false);
   const magicPublishableKey = "pk_live_E4F135AEC08C0BEB";
   const providerId = "iADLL3f93drBVBQpvwiAWnnBwfrFY4vR_IE5Z7Ob3Uc=";
@@ -17,38 +17,44 @@ const MagicWidget = ({ user }) => {
     extensions: [new OpenIdExtension()],
   });
 
+  const provider = new ethers.BrowserProvider(magic.rpcProvider);
+
   const loginWithMagic = async () => {
     setLoading(true);
+
     const did = await magic.openid.loginWithOIDC({ jwt, providerId });
     const data = await magic.user.getMetadata();
 
-    setMetadata(data);
-
+    setAddress(data.publicAddress);
     setLoading(false);
   };
 
   const getBalance = async () => {
-    const provider = new WebSocketProvider(magic.rpcProvider);
-    const balance = await provider.getBalance(metadata.publicAddress);
-    console.log(balance);
-    setBalance(balance);
+    const isLoggedIn = await magic.user.isLoggedIn();
+    if (isLoggedIn) {
+      const weiBalance = await provider.getBalance(address);
+      const ethBalance = ethers.formatEther(weiBalance);
+      setBalance(ethBalance);
+    }
   };
 
   useEffect(() => {
     loginWithMagic();
-    getBalance();
   }, []);
+
+  useEffect(() => {
+    if (address) {
+      getBalance();
+    }
+  }, [address]);
 
   return (
     <div>
-      {!metadata ? (
+      {!address ? (
         <PulseLoader loading={loading} color="#6851ff" />
       ) : (
         <div>
-          <p>
-            {metadata.publicAddress.slice(0, 6)}...
-            {metadata.publicAddress.slice(-4)}
-          </p>
+          <p>{address}</p>
           <p>{balance}</p>
         </div>
       )}
