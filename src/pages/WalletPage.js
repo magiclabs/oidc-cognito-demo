@@ -8,8 +8,7 @@ const WalletPage = () => {
       <Authenticator>
         {({ signOut, user }) => (
           <div>
-            <h1>Hello, welcome to my Website</h1>
-            <h3>You are authenticated. This is the premium content page.</h3>
+            <h1 className="wallet-title">Magic Wallet</h1>
             <MagicWidget user={user} />
             <button onClick={signOut}>Sign Out</button>
           </div>
