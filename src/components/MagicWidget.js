@@ -4,9 +4,9 @@ import { OpenIdExtension } from "@magic-ext/oidc";
 import PulseLoader from "react-spinners/PulseLoader";
 import { ethers } from "ethers";
 
-const MagicWidget = ({ user }) => {
-  const [address, setAddress] = useState();
-  const [balance, setBalance] = useState(0);
+const MagicWidget = ({ user, signOut }) => {
+  const [address, setAddress] = useState(null);
+  const [balance, setBalance] = useState(null);
   const [loading, setLoading] = useState(false);
   const magicPublishableKey = "pk_live_E4F135AEC08C0BEB";
   const providerId = "iADLL3f93drBVBQpvwiAWnnBwfrFY4vR_IE5Z7Ob3Uc=";
@@ -22,7 +22,7 @@ const MagicWidget = ({ user }) => {
   const loginWithMagic = async () => {
     setLoading(true);
 
-    const did = await magic.openid.loginWithOIDC({ jwt, providerId });
+    await magic.openid.loginWithOIDC({ jwt, providerId });
     const data = await magic.user.getMetadata();
 
     setAddress(data.publicAddress);
@@ -38,6 +38,11 @@ const MagicWidget = ({ user }) => {
     }
   };
 
+  const logout = async () => {
+    await magic.user.logout();
+    signOut();
+  };
+
   useEffect(() => {
     loginWithMagic();
   }, []);
@@ -50,12 +55,13 @@ const MagicWidget = ({ user }) => {
 
   return (
     <div>
-      {!address ? (
-        <PulseLoader loading={loading} color="#6851ff" />
+      {!address || !balance ? (
+        <PulseLoader color="#6851ff" />
       ) : (
         <div>
           <p>{address}</p>
           <p>{balance}</p>
+          <button onClick={logout}>Sign Out</button>
         </div>
       )}
     </div>

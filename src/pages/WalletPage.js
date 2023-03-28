@@ -8,9 +8,9 @@ const WalletPage = () => {
       <Authenticator>
         {({ signOut, user }) => (
           <div>
-            <h1 className="wallet-title">Magic Wallet</h1>
-            <MagicWidget user={user} />
-            <button onClick={signOut}>Sign Out</button>
+            <h1 className="wallet-title">Wallet</h1>
+            <MagicWidget user={user} signOut={signOut} />
+            {/* <button onClick={signOut}>Sign Out</button> */}
           </div>
         )}
       </Authenticator>
