@@ -6,13 +6,7 @@ const WalletPage = () => {
   return (
     <div className="wallet-container">
       <Authenticator>
-        {({ signOut, user }) => (
-          <div>
-            <h1 className="wallet-title">Wallet</h1>
-            <MagicWidget user={user} signOut={signOut} />
-            {/* <button onClick={signOut}>Sign Out</button> */}
-          </div>
-        )}
+        {({ signOut, user }) => <MagicWidget user={user} signOut={signOut} />}
       </Authenticator>
     </div>
   );
