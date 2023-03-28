@@ -1,6 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+  color: rgb(47, 47, 47);
+}
+
 .App {
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .nav-bar {
@@ -87,13 +99,14 @@ a:hover {
 
 .wallet-widget {
   width: 500px;
+  height: 600px;
   border-radius: 16px;
   padding: 40px 50px 50px 50px;
   box-shadow: 0px 4px 24px rgba(49, 49, 49, 0.1);
 }
 
 .wallet-title {
-  margin: 0;
+  font-size: 28px;
 }
 
 .connected {
@@ -102,4 +115,18 @@ a:hover {
 
 .disconnected {
   color: red;
+}
+
+.sign-out-button {
+  background-color: #6851ff;
+  color: white;
+  border: none;
+  border-radius: 300px;
+  padding: 12px 24px;
+  width: 224px;
+  height: 48px;
+  font-size: 18px;
+  line-height: 0;
+  font-weight: bold;
+  cursor: pointer;
 }

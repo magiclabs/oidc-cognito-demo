@@ -69,9 +69,13 @@ const MagicWidget = ({ user, signOut }) => {
         <PulseLoader loading={!address || !balance} color="#6851ff" />
       ) : (
         <div>
+          <h4>Address</h4>
           <p>{address}</p>
+          <h4>Balance</h4>
           <p>{balance}</p>
-          <button onClick={logout}>Sign Out</button>
+          <button className="sign-out-button" onClick={logout}>
+            Sign Out
+          </button>
         </div>
       )}
     </div>
