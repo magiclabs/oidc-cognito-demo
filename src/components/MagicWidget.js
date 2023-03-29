@@ -54,6 +54,7 @@ const MagicWidget = ({ user, signOut }) => {
       const tx = (await signer).sendTransaction({
         to: transaction.address,
         value: ethers.parseEther(transaction.amount),
+        gasPrice: 21000,
       });
       console.log("sent transaction...");
       (await tx).wait();
