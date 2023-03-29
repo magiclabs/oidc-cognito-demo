@@ -2,13 +2,18 @@ import { useEffect, useState } from "react";
 import { Magic } from "magic-sdk";
 import { OpenIdExtension } from "@magic-ext/oidc";
 import PulseLoader from "react-spinners/PulseLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 import { ethers } from "ethers";
 
 const MagicWidget = ({ user, signOut }) => {
   const [address, setAddress] = useState(null);
   const [balance, setBalance] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
-  const [transaction, setTransaction] = useState({ address: "", amount: "" });
+  const [transaction, setTransaction] = useState({
+    address: "",
+    amount: "",
+  });
+  const [isSending, setIsSending] = useState(false);
   const magicPublishableKey = "pk_live_E4F135AEC08C0BEB";
   const providerId = "iADLL3f93drBVBQpvwiAWnnBwfrFY4vR_IE5Z7Ob3Uc=";
   const jwt = user.signInUserSession.idToken.jwtToken;
@@ -42,12 +47,29 @@ const MagicWidget = ({ user, signOut }) => {
     setTransaction({ ...transaction, [e.target.name]: e.target.value });
   };
 
-  const sendTransaction = () => {};
+  const sendTransaction = async (e) => {
+    e.preventDefault();
+    setIsSending(true);
+    try {
+      const tx = (await signer).sendTransaction({
+        to: transaction.address,
+        value: ethers.parseEther(transaction.amount),
+      });
+      console.log("sent transaction...");
+      (await tx).wait();
+      console.log(`Transaction successful with hash: ${(await tx).hash}`);
+      setIsSending(false);
+      setTransaction({ address: "", amount: "" });
+    } catch (error) {
+      console.log(error);
+      setIsSending(false);
+    }
+  };
 
   const logout = async () => {
-    await magic.user.logout();
     setIsConnected(false);
     signOut();
+    await magic.user.logout();
   };
 
   useEffect(() => {
@@ -74,30 +96,54 @@ const MagicWidget = ({ user, signOut }) => {
         </h3>
       </div>
       {!address || !balance ? (
-        <PulseLoader loading={!address || !balance} color="#6851ff" />
+        <PulseLoader
+          cssOverride={{ margin: "60px" }}
+          loading={!address || !balance}
+          color="#6851ff"
+        />
       ) : (
         <div>
-          <h4>Address</h4>
-          <p>{address}</p>
-          <h4>Balance</h4>
-          <p>{balance} ETH</p>
+          <div>
+            <div className="info-container">
+              <h4>Address</h4>
+              <p>{address}</p>
+            </div>
+            <div className="info-container">
+              <h4>Balance</h4>
+              <p>{balance} ETH</p>
+            </div>
+            <button className="refresh-button" onClick={getBalance}>
+              Refresh
+            </button>
+          </div>
+          <hr />
           <div className="send-container">
             <h3>Send Transaction</h3>
-            <input
-              className="form-input"
-              name="address"
-              value={transaction.address}
-              onChange={handleChange}
-              placeholder="Receiving Address"
-            />
-            <input
-              className="form-input"
-              name="amount"
-              value={transaction.amount}
-              onChange={handleChange}
-              placeholder="Amount (ETH)"
-            />
+            <form onSubmit={sendTransaction}>
+              <input
+                className="form-input"
+                name="address"
+                value={transaction.address}
+                onChange={handleChange}
+                placeholder="Receiving Address"
+              />
+              <input
+                className="form-input"
+                name="amount"
+                value={transaction.amount}
+                onChange={handleChange}
+                placeholder="Amount (ETH)"
+              />
+              <button
+                type="submit"
+                className="send-button"
+                disabled={isSending}
+              >
+                {isSending ? <ClipLoader color="white" /> : "Send"}
+              </button>
+            </form>
           </div>
+          <hr />
           <button className="sign-out-button" onClick={logout}>
             Sign Out
           </button>
