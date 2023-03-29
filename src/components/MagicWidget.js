@@ -54,7 +54,7 @@ const MagicWidget = ({ user, signOut }) => {
       const tx = (await signer).sendTransaction({
         to: transaction.address,
         value: ethers.parseEther(transaction.amount),
-        gasLimit: 21000,
+        gas: 21000,
       });
       console.log("sent transaction...");
       (await tx).wait();
@@ -74,14 +74,14 @@ const MagicWidget = ({ user, signOut }) => {
   };
 
   useEffect(() => {
-    loginWithMagic();
+    loginWithMagic().then(getBalance());
   }, []);
 
-  useEffect(() => {
-    if (address) {
-      getBalance();
-    }
-  }, [address]);
+  // useEffect(() => {
+  //   if (address) {
+  //     getBalance();
+  //   }
+  // }, [address]);
 
   return (
     <div className="wallet-widget">
