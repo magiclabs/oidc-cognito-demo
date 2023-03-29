@@ -8,6 +8,7 @@ const MagicWidget = ({ user, signOut }) => {
   const [address, setAddress] = useState(null);
   const [balance, setBalance] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
+  const [transaction, setTransaction] = useState({ address: "", amount: "" });
   const magicPublishableKey = "pk_live_E4F135AEC08C0BEB";
   const providerId = "iADLL3f93drBVBQpvwiAWnnBwfrFY4vR_IE5Z7Ob3Uc=";
   const jwt = user.signInUserSession.idToken.jwtToken;
@@ -18,6 +19,7 @@ const MagicWidget = ({ user, signOut }) => {
   });
 
   const provider = new ethers.BrowserProvider(magic.rpcProvider);
+  const signer = provider.getSigner();
 
   const loginWithMagic = async () => {
     await magic.openid.loginWithOIDC({ jwt, providerId });
@@ -35,6 +37,12 @@ const MagicWidget = ({ user, signOut }) => {
       setBalance(ethBalance);
     }
   };
+
+  const handleChange = (e) => {
+    setTransaction({ ...transaction, [e.target.name]: e.target.value });
+  };
+
+  const sendTransaction = ()
 
   const logout = async () => {
     await magic.user.logout();
@@ -72,7 +80,24 @@ const MagicWidget = ({ user, signOut }) => {
           <h4>Address</h4>
           <p>{address}</p>
           <h4>Balance</h4>
-          <p>{balance}</p>
+          <p>{balance} ETH</p>
+          <div className="send-container">
+            <h3>Send Transaction</h3>
+            <input
+              className="form-input"
+              name="address"
+              value={transaction.address}
+              onChange={handleChange}
+              placeholder="Receiving Address"
+            />
+            <input
+              className="form-input"
+              name="amount"
+              value={transaction.amount}
+              onChange={handleChange}
+              placeholder="Amount (ETH)"
+            />
+          </div>
           <button className="sign-out-button" onClick={logout}>
             Sign Out
           </button>
