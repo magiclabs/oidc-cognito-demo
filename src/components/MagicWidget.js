@@ -42,7 +42,7 @@ const MagicWidget = ({ user, signOut }) => {
     setTransaction({ ...transaction, [e.target.name]: e.target.value });
   };
 
-  const sendTransaction = ()
+  const sendTransaction = () => {};
 
   const logout = async () => {
     await magic.user.logout();
