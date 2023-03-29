@@ -74,14 +74,14 @@ const MagicWidget = ({ user, signOut }) => {
   };
 
   useEffect(() => {
-    loginWithMagic().then(getBalance());
+    loginWithMagic();
   }, []);
 
-  // useEffect(() => {
-  //   if (address) {
-  //     getBalance();
-  //   }
-  // }, [address]);
+  useEffect(() => {
+    if (address) {
+      getBalance();
+    }
+  }, [address]);
 
   return (
     <div className="wallet-widget">
