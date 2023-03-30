@@ -58,7 +58,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 150px;
+  margin-top: 125px;
 }
 
 .home-title {
@@ -92,7 +92,7 @@ a:hover {
 }
 
 .wallet-container {
-  margin-top: 150px;
+  margin-top: 100px;
   display: flex;
   justify-content: center;
 }
