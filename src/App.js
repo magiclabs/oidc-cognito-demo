@@ -26,10 +26,10 @@ function App() {
             />
           </a>
           <div className="nav-links">
-            <NavLink className="content" exact="true" to="/">
+            <NavLink className="nav-link" exact="true" to="/">
               Home
             </NavLink>
-            <NavLink className="content" to="/magic-wallet">
+            <NavLink className="nav-link" to="/magic-wallet">
               Magic Wallet
             </NavLink>
           </div>
