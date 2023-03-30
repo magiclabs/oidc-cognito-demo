@@ -24,7 +24,6 @@ const MagicWidget = ({ user, signOut }) => {
   });
 
   const provider = new ethers.BrowserProvider(magic.rpcProvider);
-  const signer = provider.getSigner();
 
   const loginWithMagic = async () => {
     await magic.openid.loginWithOIDC({ jwt, providerId });
@@ -51,6 +50,7 @@ const MagicWidget = ({ user, signOut }) => {
     e.preventDefault();
     setIsSending(true);
     try {
+      const signer = provider.getSigner();
       const tx = (await signer).sendTransaction({
         to: transaction.address,
         value: ethers.parseEther(transaction.amount),
