@@ -54,7 +54,7 @@ const Home = () => {
           </li>
           <li>
             Client ID:{" "}
-            <span className="example">e.g.: 62t7cb1mddee60mocn9holvmef</span>
+            <span className="example">e.g. 62t7cb1mddee60mocn9holvmef</span>
           </li>
           <li>
             Magic Publishable API Key:{" "}
