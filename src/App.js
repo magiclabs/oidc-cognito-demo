@@ -32,6 +32,13 @@ function App() {
             <NavLink className="nav-link" to="/magic-wallet">
               Magic Wallet
             </NavLink>
+            <NavLink
+              className="nav-link"
+              to="https://magic.link/docs/home/welcome"
+              target="_blank"
+            >
+              Docs
+            </NavLink>
           </div>
         </div>
         <Routes>
