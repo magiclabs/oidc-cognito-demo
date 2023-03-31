@@ -40,6 +40,28 @@ const Home = () => {
           Sign In
         </button>
       </section>
+      <section className="info-for-mws">
+        <h2>What's Needed for MWS Integration</h2>
+        <ul>
+          <li>
+            Issuer Domain:{" "}
+            <span className="example">
+              https://cognito-idp.
+              <span className="aws-variable">YOUR_AWS_REGION</span>
+              .amazonaws.com/
+              <span className="aws-variable">YOUR_USER_POOL_ID</span>/
+            </span>
+          </li>
+          <li>
+            Client ID:{" "}
+            <span className="example">62t7cb1mddee60mocn9holvmef</span>
+          </li>
+          <li>
+            Magic Publishable API Key:{" "}
+            <span className="example">pk_live_.....</span>
+          </li>
+        </ul>
+      </section>
       <section id="instructions">
         <h2>Instructions</h2>
         <p>To build your own app using AWS, follow these instructions:</p>
