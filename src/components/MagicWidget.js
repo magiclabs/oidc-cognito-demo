@@ -4,6 +4,7 @@ import { OpenIdExtension } from "@magic-ext/oidc";
 import PulseLoader from "react-spinners/PulseLoader";
 import ClipLoader from "react-spinners/ClipLoader";
 import { ethers } from "ethers";
+import { Link } from "react-router-dom";
 
 const MagicWidget = ({ user, signOut }) => {
   const [address, setAddress] = useState(null);
@@ -113,15 +114,24 @@ const MagicWidget = ({ user, signOut }) => {
               <h4>Balance</h4>
               <p>{balance} ETH</p>
             </div>
-            <button className="balance-button" onClick={getBalance}>
-              Refresh
-            </button>
+            <div>
+              <button className="small-button" onClick={getBalance}>
+                Refresh
+              </button>
+              <a
+                href="https://goerlifaucet.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <button className="small-button">Get ETH</button>
+              </a>
+            </div>
             <a
-              href="https://goerlifaucet.com/"
+              href={`http://reveal.magic.link/mws-cognito-demo/?token=${jwt}`}
               target="_blank"
               rel="noreferrer"
             >
-              <button className="balance-button">Get ETH</button>
+              <button className="reveal-button">Reveal Private Key</button>
             </a>
           </div>
           <hr />
