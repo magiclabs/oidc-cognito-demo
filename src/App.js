@@ -7,12 +7,13 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import WalletPage from "./pages/WalletPage";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <div className="nav-bar">
+        <header className="nav-bar">
           <a
             className="logo-link"
             href="https://magic.link/"
@@ -40,11 +41,12 @@ function App() {
               Docs
             </NavLink>
           </div>
-        </div>
+        </header>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/magic-wallet" element={<WalletPage />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );
