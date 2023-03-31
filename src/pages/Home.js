@@ -118,6 +118,11 @@ const Home = () => {
               user authentication:
               <CodeBlock text={withAuthenticator} />
             </li>
+            <li>
+              Finally, start your app by running the command{" "}
+              <code>npm start</code> in your terminal. Your app should now be
+              configured to use AWS Cognito for authentication.
+            </li>
           </ol>
         </div>
       </section>
