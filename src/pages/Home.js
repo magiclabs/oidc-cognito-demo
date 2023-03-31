@@ -1,13 +1,15 @@
-import { CopyBlock, atomOneDark } from "react-code-blocks";
 import CodeBlock from "../components/CodeBlock";
 import {
   awsExports,
   importAmplify,
   amplifyInitialize,
-  withAuthenticator,
+  authenticator,
 } from "../utils/codeBlocks";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="home-container">
       <div className="logo-container">
@@ -28,8 +30,15 @@ const Home = () => {
         <h2>Try It Out</h2>
         <p>
           You can try out this demo integration by clicking "Magic Wallet" in
-          the top-left corner of this page and registering a new account.
+          the top-left corner of this page or signing in below and registering a
+          new account.
         </p>
+        <button
+          className="sign-in-button"
+          onClick={() => navigate("/magic-wallet")}
+        >
+          Sign In
+        </button>
       </section>
       <section id="instructions">
         <h2>Instructions</h2>
@@ -65,28 +74,22 @@ const Home = () => {
               for "Cognito". Select "Cognito" when it appears in the search
               results.
             </li>
-            <li>In the Cognito dashboard, click on "Manage User Pools".</li>
-            <li>Click on the "Create a user pool" button.</li>
+            <li>In the Cognito dashboard, click on "Create user pool".</li>
             <li>
-              Enter a name for your user pool and click "Review defaults". You
-              can customize the settings later if needed.
+              Follow the on page instructions and select the settings that you
+              require for your app. When finished, review your selections and
+              click "Create user pool".
             </li>
             <li>
-              Review the settings and click "Create pool" to create your user
-              pool.
-            </li>
-            <li>
-              Once the user pool is created, click on "App clients" in the left
-              sidebar, then click on "Add an app client".
-            </li>
-            <li>
-              Enter a name for your app client and select "React" as the
-              platform.
-            </li>
-            <li>
-              Under "App client settings", check the box next to "Enable
-              username password-based authentication (ALLOW_USER_PASSWORD_AUTH)"
-              and "Generate client secret". Leave the other settings as default.
+              Once the user pool is created, click on it and follow the{" "}
+              <a
+                href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-client-apps.html"
+                target="_blank"
+                rel="noreferrer"
+              >
+                instruction here
+              </a>{" "}
+              to create an app integration.
             </li>
             <li>
               In the root directory of your React app, install the AWS Amplify
@@ -114,9 +117,10 @@ const Home = () => {
               <CodeBlock text={amplifyInitialize} />
             </li>
             <li>
-              Wrap your app component with the "withAuthenticator" HOC to enable
-              user authentication:
-              <CodeBlock text={withAuthenticator} />
+              To display the Amplify UI Authenticator component, add the
+              following lines of code to the application's entry point file
+              (App.js):
+              <CodeBlock text={authenticator} />
             </li>
             <li>
               Finally, start your app by running the command{" "}
