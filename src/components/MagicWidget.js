@@ -113,9 +113,16 @@ const MagicWidget = ({ user, signOut }) => {
               <h4>Balance</h4>
               <p>{balance} ETH</p>
             </div>
-            <button className="refresh-button" onClick={getBalance}>
+            <button className="balance-button" onClick={getBalance}>
               Refresh
             </button>
+            <a
+              href="https://goerlifaucet.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <button className="balance-button">Get ETH</button>
+            </a>
           </div>
           <hr />
           <div className="send-container">
