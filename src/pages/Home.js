@@ -1,4 +1,5 @@
 import { CopyBlock, atomOneDark } from "react-code-blocks";
+import CodeBlock from "../components/CodeBlock";
 import {
   awsExports,
   importAmplify,
@@ -72,53 +73,32 @@ const Home = () => {
           </li>
           <li>
             In the root directory of your React app, install the AWS Amplify
-            library by running the command{" "}
-            <code>npm install aws-amplify --save</code>.
+            library by running the command <code>npm install aws-amplify</code>.
           </li>
           <li>
             Next, install the AWS Amplify React library by running the command{" "}
-            <code>npm install aws-amplify-react --save</code>.
+            <code>npm install aws-amplify-react</code>.
           </li>
           <li>
             In the root directory of your React app, create a new file called
             "aws-exports.js". Copy the following code into this file, replacing
             the values with your own:
-            <CopyBlock
-              text={awsExports}
-              language="javascript"
-              theme={atomOneDark}
-              codeBlock={true}
-            />
+            <CodeBlock text={awsExports} />
             Replace the placeholders with your actual values, which you can find
             in your Cognito console and AppSync console.
           </li>
           <li>
             In your app's "src/index.js" file, import the following:
-            <CopyBlock
-              text={importAmplify}
-              language="javascript"
-              theme={atomOneDark}
-              codeBlock={true}
-            />
+            <CodeBlock text={importAmplify} />
           </li>
           <li>
             Initialize Amplify by adding the following code to the same file:
-            <CopyBlock
-              text={amplifyInitialize}
-              language="javascript"
-              theme={atomOneDark}
-              codeBlock={true}
-            />
+            <CodeBlock text={amplifyInitialize} />
           </li>
           <li>
             Wrap your app component with the "withAuthenticator" HOC to enable
             user authentication:
-            <CopyBlock
-              text={withAuthenticator}
-              language="javascript"
-              theme={atomOneDark}
-              codeBlock={true}
-            />
+            <CodeBlock text={withAuthenticator} />
           </li>
         </ol>
       </div>

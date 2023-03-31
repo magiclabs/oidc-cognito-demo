@@ -207,5 +207,22 @@ h3 {
 
 .instructions {
   text-align: justify;
-  width: 800px;
+  width: 1000px;
+  margin: 40px auto;
+}
+
+li {
+  margin: 15px 0;
+}
+
+code {
+  background-color: rgb(40, 44, 52);
+  color: rgb(171, 178, 191);
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.code-block {
+  margin: 10px auto;
+  width: 90%;
 }
