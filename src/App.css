@@ -204,3 +204,8 @@ h3 {
   line-height: 0;
   font-weight: bold;
 }
+
+.instructions {
+  text-align: justify;
+  width: 800px;
+}
