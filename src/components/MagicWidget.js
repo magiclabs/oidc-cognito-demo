@@ -4,7 +4,6 @@ import { OpenIdExtension } from "@magic-ext/oidc";
 import PulseLoader from "react-spinners/PulseLoader";
 import ClipLoader from "react-spinners/ClipLoader";
 import { ethers } from "ethers";
-import { Link } from "react-router-dom";
 
 const MagicWidget = ({ user, signOut }) => {
   const [address, setAddress] = useState(null);
