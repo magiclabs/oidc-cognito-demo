@@ -22,7 +22,7 @@ const Home = () => {
         />
       </div>
       <h1 className="home-title">
-        Magic Wallet Services
+      Magic OIDC Extension
         <br /> <span>with</span> <br /> Amazon Cognito
       </h1>
       <hr className="divider" />
@@ -40,8 +40,8 @@ const Home = () => {
           Sign In
         </button>
       </section>
-      <section className="info-for-mws">
-        <h2>What's Needed for MWS Integration</h2>
+      <section className="info-for-oidc">
+        <h2>What's Needed for OIDC Integration</h2>
         <ul>
           <li>
             Issuer Domain:{" "}

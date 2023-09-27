@@ -1,3 +1,3 @@
-### Magic Wallet Services with AWS Cognito Demo
+### OIDC with AWS Cognito Demo
 
-- Codesandbox - https://codesandbox.io/s/github/magiclabs/mws-cognito-demo
+- Codesandbox - https://codesandbox.io/s/github/magiclabs/oidc-cognito-demo
