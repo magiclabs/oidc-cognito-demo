@@ -27,7 +27,7 @@ const MagicWidget = ({ user, signOut }) => {
 
   const loginWithMagic = async () => {
     await magic.openid.loginWithOIDC({ jwt, providerId });
-    const data = await magic.user.getMetadata();
+    const data = await magic.user.getInfo();
 
     setAddress(data.publicAddress);
     setIsConnected(true);
