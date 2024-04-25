@@ -73,6 +73,10 @@ const MagicWidget = ({ user, signOut }) => {
     await magic.user.logout();
   };
 
+  const revealPrivateKey = async () => {
+    await magic.user.revealPrivateKey();
+  };
+
   useEffect(() => {
     loginWithMagic();
   }, []);
@@ -125,13 +129,9 @@ const MagicWidget = ({ user, signOut }) => {
                 <button className="small-button">Get ETH</button>
               </a>
             </div>
-            <a
-              href={`http://reveal.magic.link/mws-cognito-demo/?token=${jwt}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <button className="reveal-button">Reveal Private Key</button>
-            </a>
+            <button className="reveal-button" onClick={revealPrivateKey}>
+              Reveal Private Key
+            </button>
           </div>
           <hr />
           <div className="send-container">

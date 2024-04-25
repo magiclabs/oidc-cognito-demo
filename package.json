@@ -4,10 +4,10 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/ui-react": "^4.4.0",
-    "@magic-ext/oidc": "^1.0.1",
+    "@magic-ext/oidc": "^11.0.2",
     "aws-amplify": "^5.0.20",
     "ethers": "^6.2.1",
-    "magic-sdk": "^13.6.0",
+    "magic-sdk": "^28.0.3",
     "react": "^18.2.0",
     "react-code-blocks": "0.0.9-0",
     "react-dom": "^18.2.0",
