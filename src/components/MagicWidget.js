@@ -19,7 +19,7 @@ const MagicWidget = ({ user, signOut }) => {
   const jwt = user.signInUserSession.idToken.jwtToken;
 
   const magic = new Magic(magicPublishableKey, {
-    network: "goerli",
+    network: "sepolia",
     extensions: [new OpenIdExtension()],
   });
 
